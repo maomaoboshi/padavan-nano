@@ -20,5 +20,3 @@ sed -i "s/ntp1.aliyun.com/ntp.ntsc.ac.cn/g" ./user/shared/defaults.h
 echo '修改NTP'
 sed -i "s/2001:470:0:50::2/cn.ntp.org.cn/g" ./user/shared/defaults.h
 
-echo '更新版本号时间'
-sed -i "s/FIRMWARE_BUILDS_REV=$(shell git rev-parse --short=7 HEAD 2>/dev/null)/FIRMWARE_BUILDS_REV=$(date "+%Y-%m-%d")-$(shell git rev-parse --short=7 HEAD 2>/dev/null)/g" ./versions.inc
