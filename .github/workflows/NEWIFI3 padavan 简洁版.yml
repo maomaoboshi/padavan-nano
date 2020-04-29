@@ -19,7 +19,7 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo apt-get update
-        sudo apt-get -y install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd \
+        sudo apt-get -y install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd fakeroot \
         cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
         sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
@@ -39,9 +39,9 @@ jobs:
         cp -f mod.sh /opt/rt-n56u/trunk/mod.sh
         cp -f NEWIFI3.config /opt/rt-n56u/trunk/configs/templates/NEWIFI3.config
         cd /opt/rt-n56u/trunk
-        sudo ./mod.sh
-        sudo ./clear_tree
-        sudo ./build_firmware_modify $TNAME
+        ./mod.sh
+        ./clear_tree
+        fakeroot ./build_firmware_modify $TNAME
 
     - name: clone the gitee 克隆码云
       run: git clone https://gitee.com/qpzr/padavan-nano.git ~/gitee
